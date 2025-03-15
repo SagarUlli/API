@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+</head>
+<body>
+	<div style="text-align: center; color: blue;">
+		<button id="rzp-button1">Pay Now</button>
+	</div>
+
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		var options = {
+			"key" : "[[${key}]]",
+			"amount" : "[[${amount}]]",
+			"currency" : "[[${currency}]]",
+			"name" : "JspGram",
+			"description" : "Pay to become prime member",
+			"image" : "/images/jspgram-logo.png",
+			"order_id" : "[[${orderId}]]",
+			"callback_url" : "/prime",
+			"prefill" : {
+				"name" : "sagar",
+				"email" : "sagarulli5@gmail.com",
+				"contact" : "9876543210"
+			},
+			"notes" : {
+				"address" : "Razorpay Corporate Office"
+			},
+			"theme" : {
+				"color" : "#0095f6"
+			}
+		};
+
+		var rzp1 = new Razorpay(options);
+		document.getElementById('rzp-button1').onclick = function(e) {
+			rzp1.open();
+			e.preventDefault();
+		}
+	</script>
+</body>
+</html>
