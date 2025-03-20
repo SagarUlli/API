@@ -12,10 +12,10 @@ import com.razorpay.RazorpayException;
 public class APIController {
 
     @Autowired
-    private APIService service;
+    private APIService apiService;
 
     @GetMapping("/prime")
     public String prime(ModelMap map) throws RazorpayException {
-        return service.prime(map);
+        return apiService.prime(map);
     }
 }
